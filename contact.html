@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+        * {
+            padding: 0;
+            margin: 0
+        }
+        
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ccc
+        }
+        
+        .card {
+            height: 510px;
+            width: 800px;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Poppins', sans-serif
+        }
+        
+        .card .user {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex
+        }
+        
+        .image-box {
+            width: 50%;
+            height: 100%;
+            overflow: hidden
+        }
+        
+        .image-box img {
+            box-sizing: border-box;
+            object-fit: cover;
+            width: 100%;
+            height: 100%
+        }
+        
+        .user .form {
+            width: 50%
+        }
+        
+        .signup_form .image-box {
+            position: absolute;
+            right: 0;
+            transition: all 1s;
+            z-index: 1
+        }
+        
+        .card.active .signup_form .image-box {
+            right: 100%
+        }
+        
+        .card.active .signup_form .form {
+            left: 100%
+        }
+        
+        .card .signup_form .form {
+            position: absolute;
+            background-color: #fff;
+            padding: 20px 30px;
+            left: 0;
+            box-sizing: border-box;
+            transition: all 1s;
+            z-index: 1;
+            height: 100%
+        }
+        
+        .flag-text {
+            position: relative
+        }
+        
+        .flag-text select {
+            height: 30px;
+            width: 100px;
+            background-color: #eff5fe;
+            outline: 0;
+            border: none;
+            font-size: 12px;
+            cursor: pointer
+        }
+        
+        .text_signup {
+            margin-top: 20px
+        }
+        
+        .text_signup h4 {
+            color: #7870a3
+        }
+        
+        .text_signup h2 {
+            color: #201665
+        }
+        
+        .text_signup p {
+            font-size: 12px;
+            font-weight: 700
+        }
+        
+        .text_signup p a {
+            color: blue;
+            text-decoration: none;
+            cursor: pointer
+        }
+        
+        .input-text-signup {
+            position: relative;
+            margin-top: 30px
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: 0;
+            border: 1px solid #cccadc;
+            border-radius: 5px;
+            padding-left: 5px;
+            padding-right: 20px;
+            box-sizing: border-box
+        }
+        
+        input[type="password"] {
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: 0;
+            border: 1px solid #cccadc;
+            border-radius: 5px;
+            padding-left: 5px;
+            padding-right: 24px;
+            box-sizing: border-box
+        }
+        
+        .input-text-signup i {
+            position: absolute;
+            top: 15px;
+            right: 8px;
+            color: #6b6589;
+            cursor: pointer;
+            font-size: 13px
+        }
+        
+        .fa-eye {
+            position: absolute;
+            top: 12px;
+            right: 8px
+        }
+        
+        .input-text-signup label {
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            font-size: 12px;
+            transition: all 0.5s;
+            pointer-events: none
+        }
+        
+        .input-text-signup input:focus~label,
+        .input-text-signup input:valid~label {
+            top: -16px;
+            font-weight: 700;
+            color: #7187d2
+        }
+        
+        .signup-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+        }
+        
+        .signup-button button {
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: 0;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #fff;
+            background-color: #3e66f7;
+            cursor: pointer;
+            transition: all 0.5s
+        }
+        
+        .signup-button button:hover {
+            background-color: blue
+        }
+        
+        .policy {
+            margin-top: 20px
+        }
+        
+        .policy p {
+            font-size: 12px;
+            font-weight: 700
+        }
+        
+        .policy p a {
+            color: blue;
+            text-decoration: none;
+            cursor: pointer
+        }
+        
+        .warning {
+            border: 1px solid red !important
+        }
+        
+        .signin_form .form {
+            background-color: #fff;
+            padding: 20px 30px;
+            left: 0;
+            box-sizing: border-box;
+            transition: all 1s
+        }
+        
+        @media(max-width:690px) {
+            .container {
+                height: scroll
+            }
+            .card {
+                max-width: 350px
+            }
+            .image-box {
+                display: none
+            }
+            .user .form {
+                width: 100%;
+                height: scroll
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="user signup_form">
+                <div class="form">
+
+                    <div class="text_signup">
+                        <h4>Call Us Now</h4>
+
+
+                    </div>
+                    <div class="input-text-signup"> <input type="text" required> <i class="fa fa-user"></i> <label>Name</label> </div>
+                    <div class="input-text-signup"> <input type="text" required> <i class="fa fa-envelope-o"></i> <label>Phone Number</label> </div>
+                    <div class="input-text-signup"> <input type="password" id="password_input" required> <i class="fa fa-eye-slash"></i> <label>Location</label> </div>
+                    <div class="signup-button"> <button>Sign up</button> </div>
+                    <div class="policy">
+                        <p>By clicking Sign up,you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Data Use Policy</a> ,including our <a href="#">Cookie Use</a>. </p>
+                    </div>
+                </div>
+                <div class="image-box" style="justify-content: center; flex-wrap: wrap; display: flex; flex-direction: column;">
+                    <h1 style="font-size: 45px;">For Further<br> Details</h1>
+                    <p style="font-size: 40px;"><span class="iconify" data-icon="bx:bxs-phone-call"></span>+91 8111852956</p>
+                </div>
+            </div>
+            <!-- <div class="user signin_form">
+                <div class="image-box"> <img src="https://imgur.com/FUfgyLv.jpg"> </div>
+                <div class="form">
+                    <div class="flag-text"> <select>
+                            <option>English</option>
+                            <option>Hindi</option>
+                            <option>Other</option>
+                        </select> </div>
+                    <div class="text_signup">
+                        <h4>Start your journey</h4>
+                        <h2>Sign up to Ocula</h2>
+                        <p>Don't have an account?<a href="#" class="signup-click">Sign Up</a></p>
+                    </div>
+                    <div class="input-text-signup"> <input type="text" required> <i class="fa fa-envelope-o"></i> <label>E-mail</label> </div>
+                    <div class="input-text-signup"> <input type="password" id="password_input_signin" required> <i class="fa fa-eye-slash change_eye"></i> <label>Password</label> </div>
+                    <div class="signup-button"> <button>Sign in</button> </div>
+                    <div class="policy">
+                        <p>By clicking Sign up,you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Data Use Policy</a> ,including our <a href="#">Cookie Use</a>. </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
+</html>
